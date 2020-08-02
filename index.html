@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>Codecademy Learn the Command Line Notes</title>
+    </header>
+    <body>
+        <h1>Codecademy Learn the Command Line</h1>
+            <p>The <em>command line</em> is a text interface for the computer's operating system. To access the command line, we use
+             the terminal. From the command line, you can navigate through files and directories (folders) on your computer.<br>
+            A <em>filesystem</em> organizes a computer's files and directories into a tree structure. It starts with the <em>
+                root directory</em>. Each parent directory can contain more child directories and files.
+            <img src="file:///D:/DAVEDATA/ProgDev/The%20Web%20and%20HTML/Command_Line_notes/filesystem.jpg" width="891" height="598" 
+                alt="File System Diagram"></p>
+            <h2>Navigating the File System</h2>
+                <p>We will focus on Unix-based systems.<br>
+                    Five common commands:
+                    <ul>
+                        <li><strong>pwd</strong> "Print Working Directory" outputs the name of the current working directory</li>
+                        <li><strong>ls</strong> lists all files and directories in the working directory</li>
+                        <ul>
+                            <li>option <strong>-a</strong> shows all files and directories including hidden ones (start with a dot)</li> 
+                            <li>option <strong>-l</strong> shows a long list with 7 columns of information</li>
+                            <ul>
+                                <li>access rights: rules that govern read, write, and execute</li>
+                                <li>hard links: number of child directories and files</li>
+                                <li>owner's username</li>
+                                <li>owner's group</li>
+                                <li>file size</li>
+                                <li>date & time modified</li>
+                                <li>file or directory name</li>
+                            </ul>
+                            <li>option <strong>-t</strong> shows a list sorted by the time and date last modified</li>
+                            <li>option <strong>-alt</strong> shows all of the above at once</li>
+                        </ul>
+                        <li><strong>cd <em>pathname</em></strong> switches you into the directory you specify</li>
+                        <ul>
+                            <li><strong>.</strong> is a special directory name that means "this directory"</li>
+                            <li><strong>..</strong> is a special directory name that means "one directory up"</li>
+                            <li><strong>~</strong> is a special directory name that means "home" (i.e. where your stuff begins)</li>
+                            <li><strong>/</strong> is a special directory name that means "root" (i.e. the top of the file system)</li>
+                        </ul>
+                        <li><strong>mkdir <em>directory_name</em></strong> creates a new directory in the working directory</li>
+                        <li><strong>touch <em>filename</em></strong> creates a new file inside the working directory</li>
+                    </ul>
+                    When a file, directory or program is passed into a command, it is called an <em>argument</em>.<br>
+                    <em>Options</em> are dashed letters that follow a command and modify its behavior.<br>
+                </p>
+            <h2>Viewing and Changing the File System</h2>
+                <p>We can also use the command line to copy, move, and remove files and directories.
+                    <ul>
+                        <li><strong>cp <em>source(s) destination</em></strong> copies files</li>
+                        <li><strong>mv <em>source(s) destination</em></strong> moves and renames files</li>
+                        <li><strong>rm <em>filename</em></strong> removes files</li>
+                        <ul> 
+                            <li>option <strong>-r</strong> recursively removes directories that are not empty</li>
+                            <li>option <strong>-f</strong> forces the remove without prompting if read-only</li> 
+                        </ul>
+                    </ul>
+                </p>
+                <p>
+                    Often wildcards like * (meaning any number of any characters) can be used in place of, or combined with filenames<br>    
+                </p>
+            <h2>Redirecting Input and Output</h2>
+                <p>Through redirection you can direct the input and output of a command to and from other files and programs, and
+                 chain commands together in a pipeline.</p>
+                <p>Typing <strong>echo "<em>Hello</em>"</strong> accepts the string Hello as standard input and redirects it to
+                 standard output. Here is some information about standard streams:<br>
+                <ol>
+                    <li>Standard input or <em>stdin</em> is information inputted into the terminal through the keyboard or input
+                     device</li>
+                    <li>Standard output or <em>stdout</em> is the information outputted after a process is run</li>
+                    <li>Standard error or <em>stderr</em> is an error message outputted by a failed process</li>
+                </ol>
+                Redirection reroutes standard input, standard output, and standard error to or from a different location.</p>
+                <p>Some more useful commands for manipulating text:
+                <ul>
+                    <li>Typing <strong>cat <em>filename</em></strong> outputs the contents of a file to the terminal (stdout).</li>
+                    <li>Typing <strong>wc <em>filename</em></strong> will return the number of newlines (lines), words, and bytes
+                     (characters) in a file.</li>
+                    <li>Typing <strong>sort <em>filename</em></strong> orders a file alphabetically for the standard output.</li>
+                    <li>Typing <strong>uniq <em>filename</em></strong> filters out adjacent, duplicate lines in a file.</li>
+                    <li>Typing <strong>head <em>filename</em></strong> outputs the first 10 lines of a file.</li>
+                    <li>Typing <strong>grep <em>pattern filename</em></strong> searches files for lines that match a pattern and 
+                     returns the results. The pattern may be a basic regular expression. e.g. <strong>grep Mount
+                     mountains.txt</strong></li>
+                    <ul>
+                        <li>Option <strong>-i</strong> enables the command to ignore case.</li>
+                        <li>Option <strong>-R</strong> enables the command to recursively search directories, returning filenames
+                         and the matching text.</li>
+                        <li>Option <strong>-l</strong> enables the command to return the first filename with a match. Combined with 
+                         <strong>-R</strong>, multiple filenames may be returned.</li>
+                    </ul>
+                    <li>Typing <strong>sed <em>pattern_string filename</em></strong> calls the stream editor to search a file and 
+                     replace word(s) found according to the pattern_string. e.g. <strong>sed 's/snow/rain/' forests.txt</strong> 
+                     would replace the first instance of snow in the file forests.txt with the word rain. 's' stands for substitution.
+                     When 'g' (for global) is added to the end of the pattern, all instances are replaced. e.g. <strong>
+                     sed 's/snow/rain/g' forests.txt</strong></li>
+                </ul>
+                </p>
+                <p>The following are the standard redirect commands:<br>
+                <ul>
+                    <li>The <strong>&gt</strong> command redirects the standard output to a file, either creating it if it doesn't exist 
+                     or writing over it.</li>
+                    <li>The <strong>&gt&gt</strong> command redirects the standard output to append a file.</li>
+                    <li>The <strong>&lt</strong> command redirects output from a command on the right to be input for the command on the
+                     left.</li>
+                    <li>The <strong>|</strong> is called a pipe and it redirects the output from a command on the left and pipes it in
+                     as input to the command on the right. Piped commands can also be chained together. e.g.
+                     <strong>cat volcanoes.txt | wc | cat &gt islands.txt</strong></li>
+                </ul></p>
+            <h2>Configuring the Environment</h2>
+            <h2>Bash Scripting</h2>
+            <p><a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" target="_bound">What is Bash?</a></p>
+    </body>
+    <footer>
+
+    </footer>
+</html>
